@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  php:
+    build: wmdsed4
+    ports:
+      - "8000:80"
+    volumes:
+      - /var/www/html
+    links:
+      - wmdsed_db
+
+  wmdsed_db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+     - ./wmdsed4/mysql:/var/lib/mysql
+    environment:
+     - MYSQL_DATABASE=wmdsed
+     - MYSQL_ROOT_PASSWORD=PqN67sxcrolaWnMqp
+     - MYSQL_USER=wmdsed
+     - MYSQL_PASSWORD=mspivs314opwYnq
